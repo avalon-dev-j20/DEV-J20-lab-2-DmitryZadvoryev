@@ -3,8 +3,7 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Задание №5
@@ -18,19 +17,9 @@ public class Task5 implements Task {
      */
     @Override
     public void run() throws IOException {
-        /*
-         * TODO(Студент): Выполнить задание №5
-         *
-         * 1. Реализовать метод read.
-         *
-         * 2. Прочитать ресурсы с использованием локализации по умолчанию.
-         *
-         * 3. Прочитать ресурсы с использованием локализации, отличной от той,
-         *    которая задана по умолчанию.
-         *
-         * 4. С использованием отладчика сравнить полученные ресурсы и
-         *    проверить корректность работы программы.
-         */
+        Locale.setDefault(new Locale("en", "US"));
+        ResourceBundle resourceBundleDefaultLocale = read("resources.strings.titles");
+        ResourceBundle resourceBundleRuLocale = read("resources.strings.titles", new Locale("ru"));
     }
 
     /**
@@ -41,7 +30,7 @@ public class Task5 implements Task {
      * @return новый экземпляр типа {@link ResourceBundle}
      */
     private ResourceBundle read(String path) {
-        throw new UnsupportedOperationException("Not implement yet!");
+        return ResourceBundle.getBundle(path);
     }
 
     /**
@@ -51,6 +40,6 @@ public class Task5 implements Task {
      * @return новый экземпляр типа {@link ResourceBundle}
      */
     private ResourceBundle read(String path, Locale locale) {
-        throw new UnsupportedOperationException("Not implement yet!");
+        return ResourceBundle.getBundle(path, locale);
     }
 }

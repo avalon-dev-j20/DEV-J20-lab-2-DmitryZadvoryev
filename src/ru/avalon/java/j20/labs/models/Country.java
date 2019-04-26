@@ -2,6 +2,7 @@ package ru.avalon.java.j20.labs.models;
 
 import java.text.ParseException;
 
+
 /**
  * Модель представления о стране.
  */
@@ -58,9 +59,9 @@ public class Country {
      * имеет неверный формат.
      */
     public static Country valueOf(String text) throws ParseException {
-        /*
-         * TODO(Студент): Реализовать метод valueOf класса Country
-         */
-        throw new UnsupportedOperationException("Not implemented yet!");
+        int index = text.indexOf(':');
+        String code = text.substring(0, index).trim();
+        String name = text.substring(index + 1).trim();
+        return new Country(code, name);
     }
 }
